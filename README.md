@@ -47,6 +47,10 @@ Here are more informations in detail:
 
 ## Changelog
 
+### v5.1.0:
+
+Feature: Exclusion list for global mode.
+
 ### v4.9.6:
 
 Support Android Q of Xiaomi devices(Xiaomi 9, MIX 2S, etc)
