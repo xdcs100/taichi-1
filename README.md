@@ -47,6 +47,10 @@ Here are more informations in detail:
 
 ## Changelog
 
+### v5.1.1:
+
+Fix Chrome crash in some Android Q devices. 
+
 ### v5.1.0:
 
 Feature: Exclusion list for global mode.
