@@ -47,7 +47,7 @@ Here are more informations in detail:
 
 ## Changelog
 
-### v5.1.1:
+### v5.1.1 & 5.1.2:
 
 Fix Chrome crash in some Android Q devices. 
 
