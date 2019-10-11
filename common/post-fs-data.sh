@@ -1,12 +1,13 @@
 #!/system/bin/sh
-# Please don't hardcode /magisk/modname/... ; instead, please use $MODDIR/...
-# This will make your scripts compatible even if Magisk change its mount point in the future
+
 MODDIR=${0%/*}
 
-# This script will be executed in post-fs-data mode
-# More info in the main Magisk thread
-# for mmap in system server
 rm /data/misc/taichi
+
+if [[ $(getprop ro.build.version.sdk) -ge 29 ]] && [[ $(getprop ro.build.ab_update) != "true" ]]; then
+    setenforce 0
+    exit 0
+fi
 
 magiskpolicy --live "allow system_server system_server process { execmem }"\
     "allow system_server apk_data_file file *"\

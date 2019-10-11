@@ -47,6 +47,11 @@ Here are more informations in detail:
 
 ## Changelog
 
+### v5.1.3:
+
+1. fix some bootloop of Android 10 devices.
+2. better support for Android M & N.
+
 ### v5.1.1 & 5.1.2:
 
 Fix Chrome crash in some Android Q devices. 
