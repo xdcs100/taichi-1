@@ -4,9 +4,13 @@ MODDIR=${0%/*}
 
 rm /data/misc/taichi
 
-if [[ $(getprop ro.build.version.sdk) -ge 29 ]] && [[ $(getprop ro.build.ab_update) != "true" ]]; then
-    setenforce 0
-    exit 0
+if [[ $(getprop ro.build.version.sdk) -ge 29 ]]; then
+    AB_UPDATE=$(getprop ro.build.ab_update)
+    SAR=$(getprop ro.build.system_root_image)
+    if [[ ${AB_UPDATE} != "true" ]] || ([[ ${AB_UPDATE} == "true" ]] && [[ ${SAR} == "false" ]]); then
+        setenforce 0
+        exit 0
+    fi
 fi
 
 magiskpolicy --live "allow system_server system_server process { execmem }"\
