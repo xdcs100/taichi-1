@@ -47,6 +47,10 @@ Here are more informations in detail:
 
 ## Changelog
 
+### v5.1.4 & 5.1.5
+
+fix some bootloop of Android 10 devices.
+
 ### v5.1.3:
 
 1. fix some bootloop of Android 10 devices.
