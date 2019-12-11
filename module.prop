@@ -1,7 +1,7 @@
 id=taichi
 name=Taichi
-version=v5.1.5
-versionCode=515
+version=v5.1.7
+versionCode=517
 author=weishu
 description=Use Xposed modules with Taichi in Magisk.
 minMagisk=17000
