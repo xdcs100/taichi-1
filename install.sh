@@ -137,6 +137,7 @@ on_install() {
   ui_print "- Extracting module files"
   unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
   unzip -o "$ZIPFILE" 'taichi' -d $TMPDIR >&2
+  chmod 0100 $TMPDIR/taichi
   $TMPDIR/taichi $MODPATH $TMPDIR && ui_print "Installed." || abort "Install error: $?"
 }
 
