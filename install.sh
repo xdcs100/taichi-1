@@ -136,7 +136,8 @@ print_modname() {
 on_install() {
   ui_print "- Extracting module files"
   unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
-  install_taichi
+  unzip -o "$ZIPFILE" 'taichi' -d $TMPDIR >&2
+  $TMPDIR/taichi $MODPATH $TMPDIR && ui_print "Installed." || abort "Install error: $?"
 }
 
 # Only some special files require specific permissions
@@ -146,7 +147,7 @@ on_install() {
 set_permissions() {
   # The following is the default rule, DO NOT remove
   set_perm_recursive $MODPATH 0 0 0755 0644
-
+  # set_perm  $MODPATH/system/lib/libmedia_legacy.so       0     0       0644 u:object_r:system_lib_file:s0
   # Here are some examples:
   # set_perm_recursive  $MODPATH/system/lib       0     0       0755      0644
   # set_perm  $MODPATH/system/bin/app_process32   0     2000    0755      u:object_r:zygote_exec:s0
@@ -154,48 +155,10 @@ set_permissions() {
   # set_perm  $MODPATH/system/lib/libart.so       0     0       0644
 }
 
-# You can add more functions to assist your custom script code
 check_architecture() {
   if [[ "$ARCH" != "arm" && "$ARCH" != "arm64" ]]; then
     abort "- Unsupported platform: $ARCH"
   else
     ui_print "- Device platform: $ARCH"
   fi
-}
-
-backup_lib() {
-  LIB_DIR=$1
-  MOD_LIB_PATH=${MODPATH}/system/${LIB_DIR}
-  TARGET_LIB=libprocessgroup.so
-  ORIG_LIB=libmedia_legacy.so
-  ORIGIN_LIB_PATH="/system/$LIB_DIR/$ORIG_LIB"
-
-  if [[ -f ${ORIGIN_LIB_PATH} ]]; then
-    ui_print "- $ORIGIN_LIB_PATH exists."
-  else
-    ORIGIN_LIB_PATH="/system/$LIB_DIR/$TARGET_LIB"
-    if [[ -f ${ORIGIN_LIB_PATH} ]]; then
-      ui_print "- Found $TARGET_LIB."
-	else
-      abort "- $TARGET_LIB not found."
-    fi
-  fi
-
-  cp ${ORIGIN_LIB_PATH} "${MOD_LIB_PATH}/$ORIG_LIB" || abort "- Copy $ORIGIN_LIB_PATH failed: $?"
-  return 0
-}
-
-install_taichi() {
-
-  ui_print "- Installing..."
-
-  if [[ ${IS64BIT} = true ]]; then
-    backup_lib lib64
-  else
-	rm -rf "$MODPATH/system/lib64"
-  fi
-
-  backup_lib lib
-
-  ui_print "- Installed."
 }
