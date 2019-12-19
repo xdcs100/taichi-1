@@ -47,6 +47,18 @@ Here are more informations in detail:
 
 ## Changelog
 
+### v6.0.0
+
+No new feature, infrastructure evolution.
+
+### v5.1.7
+
+Small enhancement for hiding module from detection.
+
+### v5.1.6
+
+Add uninstall script.
+
 ### v5.1.4 & 5.1.5
 
 fix some bootloop of Android 10 devices.
