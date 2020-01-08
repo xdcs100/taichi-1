@@ -47,10 +47,14 @@ Here are more informations in detail:
 
 ## Changelog
 
+
 ### v6.0.0
 
 No new feature, infrastructure evolution.
 
+<details>
+  <summary>Old versions</summary>
+  
 ### v5.1.7
 
 Small enhancement for hiding module from detection.
@@ -96,6 +100,7 @@ Support Android Q Beta 4.
 ### v4.8.0:
 
 Support new module installer introduced in Magisk 19.
+</details>
 
 ## Discussion
 
