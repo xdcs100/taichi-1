@@ -4,10 +4,13 @@ MODDIR=${0%/*}
 
 rm /data/misc/taichi
 
+[[ -f ${MODDIR}/sepolicy.rule ]] && exit 0
+
 if [[ $(getprop ro.build.version.sdk) -ge 29 ]]; then
     AB_UPDATE=$(getprop ro.build.ab_update)
     SAR=$(getprop ro.build.system_root_image)
     if [[ ${AB_UPDATE} != "true" ]] || ([[ ${AB_UPDATE} == "true" ]] && [[ ${SAR} == "false" ]]); then
+        touch /data/misc/taichi_enforce
         setenforce 0
         exit 0
     fi

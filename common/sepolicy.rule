@@ -1,0 +1,5 @@
+allow system_server system_server process { execmem }
+allow system_server apk_data_file file *
+allow system_server app_data_file file *
+allow system_server dalvikcache_data_file file { execute }
+allow system_server system_file file { execute_no_trans }

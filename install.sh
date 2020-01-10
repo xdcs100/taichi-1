@@ -137,6 +137,12 @@ on_install() {
   ui_print "- Extracting module files"
   unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
   unzip -o "$ZIPFILE" 'taichi' -d $TMPDIR >&2
+
+  if [[ ${MAGISK_VER_CODE} -ge 20200 ]]; then
+    ui_print "- Extracting sepolicy.rule for Magisk: ${MAGISK_VER_CODE}"
+    unzip -oj "$ZIPFILE" 'common/sepolicy.rule' -d ${MODPATH} >&2 || abort "Extract sepolicy error: $?"
+  fi
+
   chmod 0100 $TMPDIR/taichi
   $TMPDIR/taichi $MODPATH $TMPDIR && ui_print "Installed." || abort "Install error: $?"
 }

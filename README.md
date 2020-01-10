@@ -41,6 +41,9 @@ Here are more informations in detail:
 
 ## Changelog
 
+### v6.1.0
+
+Support pre-init sepolicy for Magisk 20.2
 
 ### v6.0.0
 
