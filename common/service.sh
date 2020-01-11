@@ -43,7 +43,7 @@ while [[ "$max_wait" -gt 0 ]]; do
 done
 
 ENFORCE_FILE=/data/misc/taichi_enforce
-if [[ -f ${ENFORCE_FILE} ]] && ${BOOT_COMPLETED};then
+if [[ -f ${ENFORCE_FILE} ]] && [[ "${BOOT_COMPLETED}" = "true" ]];then
   log "RESTORE SELinux"
   rm ${ENFORCE_FILE}
   setenforce 1
