@@ -41,6 +41,10 @@ Here are more informations in detail:
 
 ## Changelog
 
+### v6.1.5
+
+Fix: taichi may not work properly in some Huawei & Samsung devices.
+
 ### v6.1.0
 
 Support pre-init sepolicy for Magisk 20.2
