@@ -43,6 +43,10 @@ Here are more informations in detail:
 
 ### v6.1.5
 
+Fix bug introduced in v6.1.5
+
+### v6.1.5
+
 Fix: taichi may not work properly in some Huawei & Samsung devices.
 
 ### v6.1.0
